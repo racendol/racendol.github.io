@@ -1,11 +1,16 @@
+'use client'
+
 import React from 'react';
+import Resume from "@/app/profile"
+import Portfolio from './portofolio';
 
 const Home: React.FC = () => {
   return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>Test github page</h1>
+    <div className='App'>
+      <Portfolio />
     </div>
   );
 };
+
 
 export default Home;
