@@ -3,8 +3,6 @@ import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 
 const Portfolio: React.FC = () => {
   const [lang, setLang] = useState<"en" | "jp">("en");
-  const [expandedExperience, setExpandedExperience] = useState<number | null>(null);
-  const [expandedProject, setExpandedProject] = useState<string | null>(null);
 
   const toggleLang = () => setLang(lang === "en" ? "jp" : "en");
   const t = (en: string, jp: string) => (lang === "en" ? en : jp);
@@ -87,20 +85,20 @@ const Portfolio: React.FC = () => {
 
   const projects = [
     {
-      id: "sample1",
+        id: "s1",
       title: t("Inventory Management Website", "資産管理システム"),
       description:
        t("An inventory management website that are used for storing sensitive data used for forensic evidence. Colaborated with Ernst and Young.", 
         "ReactとTailwind CSSで構築した個人ポートフォリオ。"),
       techStack: ["Django", "Python", "Javascript"],
-    //   link: "https://your-portfolio-link.com",
+      link: "",
       details: [
         t("Responsive design and theme toggling.", "レスポンシブデザインとテーマの切り替え。"),
         t("Hosted on GitHub Pages.", "GitHub Pagesにホスト。")
-      ]
+      ],
     },
     {
-      id: "sample2",
+    id: "s2",
       title: "Pandemic of the Forgotten Virus",
       description: t("A bullethell shooter game that can be played by 2 players or by neural network powered AI.", ""),
       techStack: ["C#", "Unity"],
@@ -175,112 +173,25 @@ const Portfolio: React.FC = () => {
       {/* Experience */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{t("Experience", "職務経歴")}</h2>
-        {experience.map((exp, idx) => {
-          const isExpanded = expandedExperience === idx;
-          return (
-            <div key={idx} className="mb-4 border border-gray-200 rounded-lg p-4">
-              <div
-                className="flex justify-between items-center cursor-pointer hover:bg-gray-50 px-2 py-1 rounded"
-                onClick={() => setExpandedExperience(isExpanded ? null : idx)}
-              >
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{exp.company}</h3>
-                  <p className="text-sm text-gray-600">{exp.position}</p>
-                </div>
-                <div className="flex items-center gap-2 text-gray-500">
-                  <span className="text-sm">{exp.period} | {exp.location}</span>
-                  {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                </div>
-              </div>
-              <p className="text-sm text-gray-700 mt-2">{exp.description}</p>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {exp.techStack.map((tech, i) => (
-                  <span key={i} className="bg-gray-100 text-xs px-2 py-1 rounded text-gray-800 border">
-                    {tech}
-                  </span>
-                ))}
-                {/* <span className="text-s gap-2">{exp.location}</span> */}
-              </div>
-              {isExpanded && (
-                <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
-                  {exp.details.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          );
-        })}
+        <Experiences experience={experience} />
       </section>
 
       {/* Projects */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{t("Projects", "プロジェクト")}</h2>
-        {projects.map((project) => {
-          const isExpanded = expandedProject === project.id;
-          return (
-            <div key={project.id} className="mb-4 border border-gray-200 rounded-lg p-4">
-            <div
-            className="flex justify-between items-start cursor-pointer hover:bg-gray-50 px-2 py-1 rounded"
-            onClick={() => setExpandedProject(isExpanded ? null : project.id)}
-            >
-            <div className="flex-1">
-                <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold">{project.title}</h3>
-                {project.link && (
-                    <a
-                    href={project.link}
-                    className="text-blue-500 hover:text-blue-700"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >
-                    <ExternalLink size={18} />
-                    </a>
-                )}
-                </div>
-                <p className="text-sm text-gray-700 mt-1">{project.description}</p>
-            </div>
-            {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-              </div>
-              <div className="mt-2 flex flex-wrap gap-2">
-                {project.techStack.map((tech, i) => (
-                  <span key={i} className="bg-gray-100 text-xs px-2 py-1 rounded text-gray-800 border">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              {isExpanded && (
-                <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
-                  {project.details.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          );
-        })}
+        <Projects projects={projects} />
       </section>
 
       {/* Skills */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{t("Skills", "スキル")}</h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map(skill => (
-            <span key={skill} className="bg-blue-100 text-xs px-3 py-1 rounded-full text-blue-800">
-              {skill}
-            </span>
-          ))}
-        </div>
+        <Skills skills={skills} />
       </section>
 
       {/* Certificates */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{t("Certificates", "資格")}</h2>
-        <ul className="list-disc ml-4 text-sm text-gray-700 space-y-1">
-          {certifications.map((cert, i) => (
-            <li key={i}>{cert}</li>
-          ))}
-        </ul>
+        <Certificates certifications={certifications} />
       </section>
 
       {/* Languages */}
@@ -298,6 +209,129 @@ function Language(props: { languageSkills: string[] }) {
       <li key={i}>{lang}</li>
     ))}
   </ul>)
+}
+
+function Certificates(props: { certifications: string[] }) {
+    return <ul className="list-disc ml-4 text-sm text-gray-700 space-y-1">
+    {props.certifications.map((cert, i) => (
+      <li key={i}>{cert}</li>
+    ))}
+  </ul>
+}
+
+function Skills(props: {skills: string[]}) {
+    return <div className="flex flex-wrap gap-2">
+    {props.skills.map(skill => (
+      <span key={skill} className="bg-blue-100 text-xs px-3 py-1 rounded-full text-blue-800">
+        {skill}
+      </span>
+    ))}
+  </div>
+}
+
+function Projects(props: {projects: { 
+    id: string,
+    title: string,
+    techStack: string[],
+    description: string,
+    link: string,
+    details: string[]
+}[]}) {
+    const [expandedProject, setExpandedProject] = useState<string | null>(null);
+
+    return (<>{props.projects.map((project) => {
+        const isExpanded = expandedProject === project.id;
+        return (
+        <div key={project.id} className="mb-4 border border-gray-200 rounded-lg p-4">
+        <div
+        className="flex justify-between items-start cursor-pointer hover:bg-gray-50 px-2 py-1 rounded"
+        onClick={() => setExpandedProject(isExpanded ? null : project.id)}
+        >
+        <div className="flex-1">
+            <div className="flex items-center gap-2">
+            <h3 className="text-lg font-semibold">{project.title}</h3>
+            {project.link && (
+                <a
+                href={project.link}
+                className="text-blue-500 hover:text-blue-700"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                <ExternalLink size={18} />
+                </a>
+            )}
+            </div>
+            <p className="text-sm text-gray-700 mt-1">{project.description}</p>
+        </div>
+        {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </div>
+            <div className="mt-2 flex flex-wrap gap-2">
+            {project.techStack.map((tech, i) => (
+                <span key={i} className="bg-gray-100 text-xs px-2 py-1 rounded text-gray-800 border">
+                {tech}
+                </span>
+            ))}
+            </div>
+            {isExpanded && (
+            <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
+                {project.details.map((item, i) => (
+                <li key={i}>{item}</li>
+                ))}
+            </ul>
+            )}
+        </div>
+        );
+    })}</>)
+}
+
+function Experiences(props: {experience: {
+    company: string,
+    position: string,
+    location:string,
+    period: string,
+    description: string,
+    techStack: string[],
+    details: string[],
+    achivements: string[],
+}[]}) {
+    const [expandedExperience, setExpandedExperience] = useState<number | null>(null);
+
+    return (<>{props.experience.map((exp, idx) => {
+        const isExpanded = expandedExperience === idx;
+        return (
+          <div key={idx} className="mb-4 border border-gray-200 rounded-lg p-4">
+            <div
+              className="flex justify-between items-center cursor-pointer hover:bg-gray-50 px-2 py-1 rounded"
+              onClick={() => setExpandedExperience(isExpanded ? null : idx)}
+            >
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800">{exp.company}</h3>
+                <p className="text-sm text-gray-600">{exp.position}</p>
+              </div>
+              <div className="flex items-center gap-2 text-gray-500">
+                <span className="text-sm">{exp.period} | {exp.location}</span>
+                {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              </div>
+            </div>
+            <p className="text-sm text-gray-700 mt-2">{exp.description}</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {exp.techStack.map((tech, i) => (
+                <span key={i} className="bg-gray-100 text-xs px-2 py-1 rounded text-gray-800 border">
+                  {tech}
+                </span>
+              ))}
+              {/* <span className="text-s gap-2">{exp.location}</span> */}
+            </div>
+            {isExpanded && (
+              <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
+                {exp.details.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        );
+      })}</>)
 }
 
 export default Portfolio;
