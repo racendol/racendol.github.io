@@ -13,30 +13,6 @@ const Resume: React.FC = () => {
 
   const t = (en: string, jp: string) => (lang === "en" ? en : jp);
 
-  const experience = [
-    {
-      id: "hermes",
-      title: "Hermes DNS System @ Samsung",
-      position: t("Backend Engineer", "バックエンドエンジニア"),
-      date: t("2023 – Present", "2023年 – 現在"),
-      description: t(
-        "Global multi-region DNS system supporting Samsung Cloud, AI, and Firmware.",
-        "Samsung Cloud、AI、ファームウェアを支えるグローバル対応DNSシステム。"
-      ),
-      image: "/images/hermes.png",
-      techStack: ["Golang", "Python", "Ansible", "Terraform"],
-      github: "https://github.com/example/hermes",
-      demo: "",
-      highlights: [
-        t("Implemented CRUD and resolving DNS system.", "DNS管理・解決システムを実装"),
-        t("Multi-region replication & smart routing.", "マルチリージョン複製とスマートルーティング"),
-        t("Fixed legacy Python2 bugs, improved performance (up to 500×).", "Python2のバグ修正とパフォーマンス改善（最大500倍）")
-      ],
-      achievements: [
-        
-      ]
-    }
-  ];
 
   return (
     <div className="max-w-4xl mx-auto p-6 font-sans">

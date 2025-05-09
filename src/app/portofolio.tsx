@@ -68,7 +68,7 @@ const Portfolio: React.FC = () => {
         "Developed Samsung's first global multi-region DNS platform used in critical Samsung components, such as Samsung Cloud, AI, and Firmware Update services.",
         "Samsung Cloud、AI、ファームウェアアップデートで使用されるグローバルDNSプラットフォームの開発。"
     ),
-    techStack: ["Golang", "Python", "Docker", "Docker Swarm", "Ansible", "AWS", "Terraform", "MariaDB", "Telegraf", "Grafana", "Kafka", "RabbitMQ", "Redis"],
+    techStack: ["Java", "Spring", "Jenkins", "RabbitMQ", "Redis", "GraphQL", "Grafana", "Telegraf"],
     details: [
         t("Maintained a DNS platform used by internal Samsung projects.", "社内プロジェクトで使用されるDNSプラットフォームの運用・保守。"),
         t("Supported multi-region deployments with async replication and routing (healthcheck, region-based, latency).", "非同期レプリケーションとルーティング(ヘルスチェック、リージョン、レイテンシー)を備えたマルチリージョン展開。"),
