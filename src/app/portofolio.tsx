@@ -18,7 +18,7 @@ const Portfolio: React.FC = () => {
       school: "Universitas Indonesia",
       degree: t("Bachelor of Computer Science", "コンピュータサイエンス学士"),
       gpa: "3.82 / 4.0 (Cum Laude)",
-      year: "2018–2022"
+      year: "2018-2022"
     }
   ];
 
@@ -27,9 +27,9 @@ const Portfolio: React.FC = () => {
   ];
 
   const languageSkills = [
-    t("Indonesia (Native)", "インドネシア語（ネイティブレベル）"),
-    t("English (Business Level)", "英語（ビジネスレベル）"),
-    t("Japanese (Business Level)", "日本語（ビジネスレベル）")
+    t("Indonesia (Native)", "インドネシア語(ネイティブレベル)"),
+    t("English (Business Level)", "英語(ビジネスレベル)"),
+    t("Japanese (Business Level)", "日本語(ビジネスレベル)")
   ];
 
   const skills = ["Golang", "Python", "React", "TypeScript", "Terraform", "Ansible", "AWS", "PostgreSQL"];
@@ -139,32 +139,42 @@ function Projects(props:
     const t = props.t
     const projects = [
       {
-          id: "s1",
+        id: "s1",
         title: t("Inventory Management Website", "資産管理システム"),
-        description:
-        t("An inventory management website that are used for storing sensitive data used for forensic evidence. Colaborated with Ernst and Young.", 
-          ""),
+        description: t(
+          "An inventory management website used for storing sensitive data related to forensic evidence. Collaborated with Ernst and Young.",
+          "フォレンジック証拠に関連する機密データを保存するための資産管理ウェブサイト。アーンスト・アンド・ヤングとの共同開発。"
+        ),
         techStack: ["Django", "Python", "Javascript", "Gitlab"],
         link: "",
         details: [
-          t("Inventory Management website that can read, export, and import data from Excel, and manage those data.", ""),
-          t("The data are sensitive used for forensic evidence", ""),
-          t("Developed using Django and Python, with JQuery and Bootstrap for frontend", ""),
-          t("Uses Gitlab for CI/CD.", ""),
+          t(
+            "Inventory management website with the ability to read, export, and import data from Excel and manage that data.",
+            "Excelファイルからのデータ読み込み、エクスポート、インポート、およびデータ管理が可能な資産管理ウェブサイト。"
+          ),
+          t("The data is sensitive and used for forensic evidence.", "フォレンジック証拠として使用される機密データを管理。"),
+          t(
+            "Developed using Django and Python, with JQuery and Bootstrap for the frontend.",
+            "DjangoとPythonで開発し、フロントエンドにはJQueryとBootstrapを使用。"
+          ),
+          t("Used GitLab for CI/CD.", "CI/CDにはGitLabを使用。"),
         ],
       },
       {
-      id: "s2",
+        id: "s2",
         title: "Pandemic of the Forgotten Virus",
-        description: t("A bullethell shooter game that can be played by 2 players or by neural network powered AI.", ""),
+        description: t(
+          "A bullet-hell shooter game playable by two players or an AI powered by a neural network.",
+          "2人プレイまたはニューラルネットワークによるAIでプレイ可能な弾幕系シューティングゲーム。"
+        ),
         techStack: ["C#", "Unity"],
         link: "https://eaglescommander.itch.io/pandemic-of-the-forgotten-virus?trk=public_profile_project-button",
         details: [
-          t("Developed the main shooting gameplay part and shooting pattern.", ""),
-          t("Idealize the pattern for the boss attack pattern.", ""),
-          t("Helped the training for the AI model.", ""),
-          t("Developed using C# and Unity.", ""),
-        ]
+          t("Developed the core shooting mechanics and bullet patterns.", "シューティングのコアメカニクスと弾幕パターンを開発。"),
+          t("Designed boss attack patterns.", "ボスの攻撃パターンを設計。"),
+          t("Assisted in training the AI model.", "AIモデルのトレーニングをサポート。"),
+          t("Developed using C# and Unity.", "C#とUnityで開発。"),
+        ],
       }
     ];
 
@@ -221,24 +231,26 @@ function Experiences(props:
     const t = props.t
     const experience = [
       {
-          company: t("Tomato Co. Ltd.","株式会社トマト"),
-          position: t("Software Engineer", "ソフトウェアエンジニア"),
-          location: t("Tokyo, Japan", "東京、日本"),
-          period: t("2025 April - Present", "2025年4月 - 現在"),
-          description: t(
-            "Led a team of engineers for developing company's in-house management software",
-            ""
-          ),
-          techStack: ["Java", "Spring", "Angular", "React", "Typescript", "PostgreSQL"],
-          details: [
-            t("Developed fullstack of in-house management system software, using Spring Boot Java as Backend and Angular & React as Frontend",
-              ""),
-            t("The system can send emails notification, generate a QR code check-in, and exporting data to CSV.",""),
-            t("Communicate using Japanese and English with team members and managers.",""),
-          ],
+        company: t("Tomato Co. Ltd.", "株式会社トマト"),
+        position: t("Software Engineer", "ソフトウェアエンジニア"),
+        location: t("Tokyo, Japan", "東京、日本"),
+        period: t("2025 April - Present", "2025年4月 - 現在"),
+        description: t(
+          "Led a team of engineers in developing the company's in-house management software.",
+          "社内管理ソフトウェアの開発を担当し、エンジニアチームをリード。"
+        ),
+        techStack: ["Java", "Spring", "Angular", "React", "Typescript", "PostgreSQL"],
+        details: [
+          t("Developed the full-stack in-house management system software using Spring Boot (Java) for the backend and Angular & React for the frontend.",
+            "バックエンドにSpring Boot (Java)、フロントエンドにAngularおよびReactを使用して、社内管理システムのフルスタック開発を担当。"),
+          t("Implemented features including email notifications, QR code check-in, and data export to CSV.",
+            "メール通知、QRコードによるチェックイン、CSV形式でのデータエクスポート機能を実装。"),
+          t("Communicated in both Japanese and English with team members and management.",
+            "チームメンバーやマネージャーと日本語および英語でコミュニケーションを実施。"),
+        ],
         achievements: [
-            t("Led a team of engineers to develop the software as a leader, assign tasks and managing schedule while helping development",
-              ""),
+          t("Led a team of engineers, delegated tasks, managed schedules, and contributed to development.",
+            "エンジニアチームをリードし、タスクの割り当てやスケジュール管理を行いながら、開発にも貢献。"),
         ],
       },
       {
@@ -247,44 +259,60 @@ function Experiences(props:
         location: t("Jakarta, Indonesia", "ジャカルタ、インドネシア"),
         period: t("2022 September - 2025 April", "2022年9月 - 2025年4月"),
         description: t(
-          "Developed Samsung's first global multi-region DNS platform used in critical Samsung components, such as Samsung Cloud, AI, and Firmware Update services.",
-          "Samsung Cloud、AI、ファームウェアアップデートで使用されるグローバルDNSプラットフォームの開発。"
+          "Developed Samsung's first global multi-region DNS platform used in critical Samsung components such as Samsung Cloud, AI, and Firmware Update services.",
+          "Samsung Cloud、AI、ファームウェアアップデートなどの重要なコンポーネントで使用される、Samsung初のグローバルマルチリージョンDNSプラットフォームを開発。"
         ),
         techStack: ["Golang", "Python", "Docker", "Docker Swarm", "Ansible", "AWS", "Jenkins","Terraform", "MariaDB", "Telegraf", "Grafana", "Kafka", "RabbitMQ", "Redis"],
         details: [
-          t("Developed and maintained a DNS platform used by internal Samsung projects.",""),
-          t("Supported multi-region deployments with async replication and routing (healthcheck, region-based, latency).",""),
-          t("Development are focused on performance and high-availability.",""),
-          t("Compatible with AWS CLI and Terraform, can be used by other projects as drop-in replacement for AWS DNS Service and be used for automation and Infrastructure as Code with Terraform.",""),
-          t("Communicate using Indonesia, and with teams in other regions using English",""),
+          t("Developed and maintained a DNS platform used by internal Samsung projects.",
+            "Samsung社内プロジェクトで使用されるDNSプラットフォームの開発と保守を担当。"),
+          t("Supported multi-region deployments with asynchronous replication and routing (health checks, region-based, latency-based).",
+            "非同期レプリケーションやルーティング(ヘルスチェック、リージョンベース、レイテンシーベース)に対応したマルチリージョン展開をサポート。"),
+          t("Focused on performance and high availability in development.",
+            "開発ではパフォーマンスと高可用性を重視。"),
+          t("Integrated compatibility with AWS CLI and Terraform, allowing it to be used as a drop-in replacement for AWS DNS Service and support Infrastructure as Code.",
+            "AWS CLIやTerraformとの互換性を備え、AWS DNSサービスの代替として利用可能。IaC(Infrastructure as Code)にも対応。"),
+          t("Communicated in Bahasa Indonesia and English with local and international teams.",
+            "インドネシア語と英語を用いて、国内外のチームとコミュニケーションを実施。"),
         ],
         achievements: [
-          t("Took part designing large complex multi-regional system, and are responsible for designing the asynchronous replication using Kafka.",""),
-          t("Refactored healthcheck algorithm from singlethreaded to multithreaded with cache, increasing performance by 500 times and improving overall scalability",""),
-          t("Refactored complex recursive backend algorithm to simpler algorithm using BFS, increasing performance by 2.5, improving traceability and easir debugging",""),
-          t("Fixed a obscure bug on legacy Python2 system that cannot be found even by ChatGPT and Stackoverflow. Got a praise from leader and become the go-to person for fixing bugs.",""),
+          t("Participated in the design of a large, complex multi-regional system and was responsible for the asynchronous replication design using Kafka.",
+            "大規模かつ複雑なマルチリージョンシステムの設計に参加し、Kafkaを用いた非同期レプリケーション設計を担当。"),
+          t("Refactored the health check algorithm from single-threaded to multi-threaded with caching, improving performance by 500 times and enhancing scalability.",
+            "ヘルスチェックアルゴリズムをシングルスレッドからマルチスレッドとキャッシュ対応にリファクタリングし、パフォーマンスを500倍向上させ、スケーラビリティを改善。"),
+          t("Refactored a complex recursive backend algorithm into a simpler breadth-first algorithm, improving performance by 2.5x and making debugging easier.",
+            "複雑な再帰的バックエンドアルゴリズムを、簡潔な幅優先探索アルゴリズムにリファクタリングし、パフォーマンスを2.5倍向上させ、デバッグの容易化を実現。"),
+          t("Fixed an obscure bug in a legacy Python2 system that couldn't be found by ChatGPT or Stack Overflow. Received praise from the team lead and became the go-to person for bug fixes.",
+            "ChatGPTやStack Overflowでも見つからないレガシーなPython2システムの難解なバグを修正。リーダーから高く評価され、バグ修正の相談役となる。"),
         ],
       },
       {
-      company: "Sayurbox",
-      position: t("Backend Engineer Intern", "バックエンドエンジニアインターン"),
-      location: t("Jakarta, Indonesia", "ジャカルタ、インドネシア"),
-      period: t("2022 September - 2022 November", "2022年9月 - 2022年11月"),
-      description: t(
-        "Develop features for B2C application for selling vegetables from farmers to customers",""
-      ),
-      techStack: ["Java", "Spring", "Jenkins", "RabbitMQ", "Redis", "GraphQL", "Grafana", "Telegraf"],
-      details: [
-        t("Developed features and maintained B2C application on Spring Boot Java",""),
-        t("Developed on startup agile environment using Scrum",""),
-        t("Communicate using Indonesia and English with other teams in India",""),
-      ],
-      achievements: [
-        t("Developed a new critical feature for voucher system using Command Design Pattern, increasing potential sales by up to 20%",""),
-        t("Refactored a feature in voucher system to use messaging queue with RabbitMQ to communicate with other services and increasing scalabilty.",""),
-      ],
-      }
-    ]
+        company: "Sayurbox",
+        position: t("Backend Engineer Intern", "バックエンドエンジニアインターン"),
+        location: t("Jakarta, Indonesia", "ジャカルタ、インドネシア"),
+        period: t("2022 September - 2022 November", "2022年9月 - 2022年11月"),
+        description: t(
+          "Developed features for the B2C application that connects farmers to customers.",
+          "農家と顧客をつなぐB2Cアプリケーションの機能を開発。"
+        ),
+        techStack: ["Java", "Spring", "Jenkins", "RabbitMQ", "Redis", "GraphQL", "Grafana", "Telegraf"],
+        details: [
+          t("Developed and maintained the B2C application using Spring Boot (Java).",
+            "Spring Boot (Java)を用いて、B2Cアプリケーションの開発と保守を担当。"),
+          t("Worked in a startup agile environment using Scrum methodology.",
+            "スタートアップ環境において、Scrum手法を用いたアジャイル開発に従事。"),
+          t("Communicated in Bahasa Indonesia and English with team members, including those based in India.",
+            "インドネシア語と英語で、インド拠点を含むチームメンバーと連携。"),
+        ],
+        achievements: [
+          t("Developed a critical voucher feature using the Command Design Pattern, potentially increasing sales by up to 20%.",
+            "コマンドデザインパターンを使用して重要なバウチャー機能を開発し、売上を最大20%向上させる可能性を実現。"),
+          t("Refactored the voucher system to use RabbitMQ messaging queues for inter-service communication, enhancing scalability.",
+            "バウチャーシステムをRabbitMQを使ったメッセージキューにリファクタリングし、サービス間通信のスケーラビリティを向上。"),
+        ],
+      },
+    ];
+
 
     return (<>{experience.map((exp, idx) => {
         const isExpanded = expandedExperience === idx;
