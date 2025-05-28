@@ -73,10 +73,10 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Skills */}
-      {/* <section className="mb-10">
+      <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{t("Skills", "スキル")}</h2>
         <Skills skills={skills} />
-      </section> */}
+      </section>
 
       {/* Education */}
       <section className="mb-10">
@@ -143,12 +143,14 @@ function Projects(props:
         title: t("Inventory Management Website", "資産管理システム"),
         description:
         t("An inventory management website that are used for storing sensitive data used for forensic evidence. Colaborated with Ernst and Young.", 
-          "ReactとTailwind CSSで構築した個人ポートフォリオ。"),
-        techStack: ["Django", "Python", "Javascript"],
+          ""),
+        techStack: ["Django", "Python", "Javascript", "Gitlab"],
         link: "",
         details: [
-          t("Responsive design and theme toggling.", "レスポンシブデザインとテーマの切り替え。"),
-          t("Hosted on GitHub Pages.", "GitHub Pagesにホスト。")
+          t("Inventory Management website that can read, export, and import data from Excel, and manage those data.", ""),
+          t("The data are sensitive used for forensic evidence", ""),
+          t("Developed using Django and Python, with JQuery and Bootstrap for frontend", ""),
+          t("Uses Gitlab for CI/CD.", ""),
         ],
       },
       {
@@ -158,9 +160,10 @@ function Projects(props:
         techStack: ["C#", "Unity"],
         link: "https://eaglescommander.itch.io/pandemic-of-the-forgotten-virus?trk=public_profile_project-button",
         details: [
-          t("Developed the main shooting gameplay part and shooting pattern.", "静的サイト生成を使用。"),
-          t("Idealize the pattern for the boss special attacks.", "i18nによる言語切り替えを統合。"),
-          t("Helped the training for the AI model.", "i18nによる言語切り替えを統合。")
+          t("Developed the main shooting gameplay part and shooting pattern.", ""),
+          t("Idealize the pattern for the boss attack pattern.", ""),
+          t("Helped the training for the AI model.", ""),
+          t("Developed using C# and Unity.", ""),
         ]
       }
     ];
@@ -230,10 +233,11 @@ function Experiences(props:
           details: [
             t("Developed fullstack of in-house management system software, using Spring Boot Java as Backend and Angular & React as Frontend",
               ""),
-            t("Communicate using Japanese and English with team members and managers",""),
+            t("The system can send emails notification, generate a QR code check-in, and exporting data to CSV.",""),
+            t("Communicate using Japanese and English with team members and managers.",""),
           ],
         achievements: [
-            t("Led a team of engineers to develop the software as a leader, assign tasks and managing schedule while helping developing the software",
+            t("Led a team of engineers to develop the software as a leader, assign tasks and managing schedule while helping development",
               ""),
         ],
       },
@@ -251,13 +255,14 @@ function Experiences(props:
           t("Developed and maintained a DNS platform used by internal Samsung projects.",""),
           t("Supported multi-region deployments with async replication and routing (healthcheck, region-based, latency).",""),
           t("Development are focused on performance and high-availability.",""),
-          t("Compatible with AWS CLI and Terraform, can be used by other projects as drop-in replacement for AWS Route53 DNS Service.",""),
+          t("Compatible with AWS CLI and Terraform, can be used by other projects as drop-in replacement for AWS DNS Service and be used for automation and Infrastructure as Code with Terraform.",""),
           t("Communicate using Indonesia, and with teams in other regions using English",""),
         ],
         achievements: [
-          t("Refactored complex recursive backend algorithm to simple algorithm, increasing performance by 2.5, improving traceability and easir debugging",""),
-          t("Refactored complex recursive backend algorithm to simple algorithm, increasing performance by 2.5, improving traceability and easir debugging",""),
-          t("",""),
+          t("Took part designing large complex multi-regional system, and are responsible for designing the asynchronous replication using Kafka.",""),
+          t("Refactored healthcheck algorithm from singlethreaded to multithreaded with cache, increasing performance by 500 times and improving overall scalability",""),
+          t("Refactored complex recursive backend algorithm to simpler algorithm using BFS, increasing performance by 2.5, improving traceability and easir debugging",""),
+          t("Fixed a obscure bug on legacy Python2 system that cannot be found even by ChatGPT and Stackoverflow. Got a praise from leader and become the go-to person for fixing bugs.",""),
         ],
       },
       {
@@ -270,12 +275,13 @@ function Experiences(props:
       ),
       techStack: ["Java", "Spring", "Jenkins", "RabbitMQ", "Redis", "GraphQL", "Grafana", "Telegraf"],
       details: [
-        t("",""),
-        t("",""),
+        t("Developed features and maintained B2C application on Spring Boot Java",""),
+        t("Developed on startup agile environment using Scrum",""),
+        t("Communicate using Indonesia and English with other teams in India",""),
       ],
       achievements: [
-        t("",""),
-        t("",""),
+        t("Developed a new critical feature for voucher system using Command Design Pattern, increasing potential sales by up to 20%",""),
+        t("Refactored a feature in voucher system to use messaging queue with RabbitMQ to communicate with other services and increasing scalabilty.",""),
       ],
       }
     ]
