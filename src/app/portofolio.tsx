@@ -157,7 +157,7 @@ function Projects(props:
             "Developed using Django and Python, with JQuery and Bootstrap for the frontend.",
             "DjangoとPythonで開発し、フロントエンドにはJQueryとBootstrapを使用。"
           ),
-          t("Used GitLab for CI/CD.", "CI/CDにはGitLabを使用。"),
+          t("Used GitLab Runner for CI/CD.", "CI/CDにはGitLab Runnerを使用。"),
         ],
       },
       {
@@ -174,6 +174,22 @@ function Projects(props:
           t("Designed boss attack patterns.", "ボスの攻撃パターンを設計。"),
           t("Assisted in training the AI model.", "AIモデルのトレーニングをサポート。"),
           t("Developed using C# and Unity.", "C#とUnityで開発。"),
+        ],
+      },
+      {
+        id: "s2",
+        title: "Teman.ai",
+        description: t(
+          "A chat bot for LINE that can manage schedule via Trello",
+          ""
+        ),
+        techStack: ["Java", "Spring Boot"],
+        link: "https://gitlab.com/advprog-teman-ai-microservices",
+        details: [
+          t("Developed the service and REST API for handling commands from users", ""),
+          t("Refactored handlers for commands using Design Pattern, improving maintainability", ""),
+          t("Migrated the application from monolithic to microservices, improving scalability", ""),
+          t("CI/CD via Gitlab Runner and deployed to Heroku",""),
         ],
       }
     ];
@@ -241,10 +257,10 @@ function Experiences(props:
         ),
         techStack: ["Java", "Spring", "Angular", "React", "Typescript", "PostgreSQL"],
         details: [
-          t("Developed the full-stack in-house management system software using Spring Boot (Java) for the backend and Angular & React for the frontend.",
+          t("Developed the full-stack CRUD in-house management system software using Spring Boot (Java) for the backend and Angular & React for the frontend.",
             "バックエンドにSpring Boot (Java)、フロントエンドにAngularおよびReactを使用して、社内管理システムのフルスタック開発を担当。"),
-          t("Implemented features including email notifications, QR code check-in, and data export to CSV.",
-            "メール通知、QRコードによるチェックイン、CSV形式でのデータエクスポート機能を実装。"),
+          t("Implemented features including email notifications, QR code check-in, and data export to CSV using REST API and MVC architecture.",
+            "REST APIとMVCアーキテクチャでメール通知、QRコードによるチェックイン、CSV形式でのデータエクスポート機能を実装。"),
           t("Communicated in both Japanese and English with team members and management.",
             "チームメンバーやマネージャーと日本語および英語でコミュニケーションを実施。"),
         ],
@@ -262,7 +278,7 @@ function Experiences(props:
           "Developed Samsung's first global multi-region DNS platform used in critical Samsung components such as Samsung Cloud, AI, and Firmware Update services.",
           "Samsung Cloud、AI、ファームウェアアップデートなどの重要なコンポーネントで使用される、Samsung初のグローバルマルチリージョンDNSプラットフォームを開発。"
         ),
-        techStack: ["Golang", "Python", "Docker", "Docker Swarm", "Ansible", "AWS", "Jenkins","Terraform", "MariaDB", "Telegraf", "Grafana", "Kafka", "RabbitMQ", "Redis"],
+        techStack: ["Golang", "Python", "Docker", "Docker Swarm", "Ansible", "AWS", "Jenkins", "Github Action", "Terraform", "MariaDB", "Telegraf", "Grafana", "Kafka", "RabbitMQ", "Redis"],
         details: [
           t("Developed and maintained a DNS platform used by internal Samsung projects.",
             "Samsung社内プロジェクトで使用されるDNSプラットフォームの開発と保守を担当。"),
