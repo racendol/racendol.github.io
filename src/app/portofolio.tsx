@@ -73,10 +73,10 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Skills */}
-      <section className="mb-10">
+      {/* <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{t("Skills", "スキル")}</h2>
         <Skills skills={skills} />
-      </section>
+      </section> */}
 
       {/* Education */}
       <section className="mb-10">
