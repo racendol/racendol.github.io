@@ -153,6 +153,7 @@ function Projects(props:
             "Excelファイルからのデータ読み込み、エクスポート、インポート、およびデータ管理が可能な資産管理ウェブサイト。"
           ),
           t("The data is sensitive and used for forensic evidence.", "フォレンジック証拠として使用される機密データを管理。"),
+          t("Won Masterpiece Product Award, an award of top 5 product and beating over 30 teams.", "30以上のチームの中から選ばれ、上位5製品に贈られる「マスターピースプロダクト賞」を受賞。"),
           t(
             "Developed using Django and Python, with JQuery and Bootstrap for the frontend.",
             "DjangoとPythonで開発し、フロントエンドにはJQueryとBootstrapを使用。"
