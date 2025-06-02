@@ -7,7 +7,7 @@ const Portfolio: React.FC = () => {
   const t = (en: string, jp: string) => (lang === "en" ? en : jp);
 
   const contact = {
-    email: "rocky259 [at] gmail.com",
+    email: "rocky.arkan259 [at] gmail.com",
     // phone: "+81-90-1234-5678",
     github: "https://github.com/racendol",
     linkedin: "https://linkedin.com/in/rocky-arkan-951a45129"
