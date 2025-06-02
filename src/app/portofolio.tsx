@@ -170,28 +170,37 @@ function Projects(props:
         techStack: ["C#", "Unity"],
         link: "https://eaglescommander.itch.io/pandemic-of-the-forgotten-virus?trk=public_profile_project-button",
         details: [
-          t("Developed the core shooting mechanics and bullet patterns.", "シューティングのコアメカニクスと弾幕パターンを開発。"),
-          t("Designed boss attack patterns.", "ボスの攻撃パターンを設計。"),
-          t("Assisted in training the AI model.", "AIモデルのトレーニングをサポート。"),
+          t(
+            "Developed the core gameplay mechanics, such as the general scene template, physics, and how to spawn bullets.",
+            "一般的なシーンテンプレート、物理挙動、弾の生成など、ゲームプレイのコアメカニクスを開発。"
+          ),
+          t(
+            "Designed attack patterns, such as randomized bullet spread and homing bullet.",
+            "ランダム化された弾の拡散や追尾弾など、攻撃パターンを設計。"
+          ),
+          t(
+            "Developed the AI model with neural network and Genetic Algorithm. The neural network and training environment are coded from scratch in Unity.",
+            "ニューラルネットワークと遺伝的アルゴリズムを用いたAIモデルを開発。ニューラルネットワークとトレーニング環境はUnity上でスクラッチから実装。"
+          ),
           t("Developed using C# and Unity.", "C#とUnityで開発。"),
         ],
       },
       {
-        id: "s2",
-        title: "Teman.ai",
+        id: "s3",
+        title: t("Teman.ai", "Teman.ai"),
         description: t(
           "A chat bot for LINE that can manage schedule via Trello",
-          ""
+          "Trelloと連携してスケジュール管理ができるLINE向けのチャットボット"
         ),
         techStack: ["Java", "Spring Boot"],
         link: "https://gitlab.com/advprog-teman-ai-microservices",
         details: [
-          t("Developed the service and REST API for handling commands from users", ""),
-          t("Refactored handlers for commands using Design Pattern, improving maintainability", ""),
-          t("Migrated the application from monolithic to microservices, improving scalability", ""),
-          t("CI/CD via Gitlab Runner and deployed to Heroku",""),
+          t("Developed the service and REST API for handling commands from users", "ユーザーからのコマンドを処理するためのサービスおよびREST APIを開発"),
+          t("Refactored handlers for commands using design patterns, improving maintainability", "保守性を向上させるために、デザインパターンを使用してコマンドのハンドラをリファクタリング"),
+          t("Migrated the application from monolithic to microservices, improving scalability", "アプリケーションをモノリシック構成からマイクロサービスアーキテクチャに移行し、スケーラビリティを向上"),
+          t("CI/CD via Gitlab Runner and deployed to Heroku", "CI/CDにはGitLab Runnerを使用し、Herokuにデプロイ"),
         ],
-      }
+      },
     ];
 
     return (<>{projects.map((project) => {
