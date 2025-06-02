@@ -32,7 +32,55 @@ const Portfolio: React.FC = () => {
     t("Japanese (Business Level)", "日本語(ビジネスレベル)")
   ];
 
-  const skills = ["Golang", "Python", "React", "TypeScript", "Terraform", "Ansible", "AWS", "PostgreSQL"];
+  const groupedSkills = {
+    "Languages": [
+      "Golang",
+      "Python",
+      "Java",
+      "C#",
+      "TypeScript",
+      "JavaScript",
+    ],
+    "Frameworks & Libraries": [
+      "Spring Boot",
+      "React",
+      "Angular",
+      "Unity",
+      "Tensorflow",
+      "GraphQL",
+    ],
+    "Infrastructure & DevOps": ["Terraform",
+      "Ansible",
+      "Docker",
+      "Docker Swarm",
+      "Kubernetes",
+      "AWS",
+      "Jenkins",
+      "GitLab CI/CD",
+      "Heroku",
+    ],
+    "Messaging & Communication": ["RabbitMQ", "Kafka"],
+    "Databases": [
+      "PostgreSQL",
+      "MariaDB",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+    ],
+    "Monitoring & Logging": [
+      "Grafana",
+      "Telegraf",
+      "Loki",
+      "Promtail",
+    ],
+    "Other": [
+      t("Data Structures","データ構造"),
+      t("Algorithms","アルゴリズム"),
+      t("Machine Learning","機械学習"),
+      t("Data Science","データサイエンス"),
+      t("Cloud Computing","クラウドコンピューティング"),
+    ]
+  };
 
   return (
     <div className="max-w-5xl mx-auto p-6 font-sans">
@@ -73,10 +121,10 @@ const Portfolio: React.FC = () => {
       </section>
 
       {/* Skills */}
-      {/* <section className="mb-10">
+      <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{t("Skills", "スキル")}</h2>
-        <Skills skills={skills} />
-      </section> */}
+        <Skills skills={groupedSkills} />
+      </section>
 
       {/* Education */}
       <section className="mb-10">
@@ -121,14 +169,26 @@ function Certificates(props: { certifications: string[] }) {
   </ul>
 }
 
-function Skills(props: {skills: string[]}) {
-    return <div className="flex flex-wrap gap-2">
-    {props.skills.map(skill => (
-      <span key={skill} className="bg-blue-100 text-xs px-3 py-1 rounded-full text-blue-800">
-        {skill}
-      </span>
-    ))}
-  </div>
+function Skills({ skills }: { skills: Record<string, string[]> }) {
+  return (
+    <div className="space-y-4">
+      {Object.entries(skills).map(([category, items]) => (
+        <div key={category}>
+          <h3 className="text-sm font-semibold text-gray-700 mb-2">{category}</h3>
+          <div className="flex flex-wrap gap-2">
+            {items.map(skill => (
+              <span
+                key={skill}
+                className="bg-blue-100 text-xs px-3 py-1 rounded-full text-blue-800"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function Projects(props:
