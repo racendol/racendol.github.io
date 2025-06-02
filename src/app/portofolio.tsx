@@ -208,7 +208,7 @@ function Projects(props:
         return (
         <div key={project.id} className="mb-4 border border-gray-200 rounded-lg p-4">
         <div
-        className="flex justify-between items-start cursor-pointer hover:bg-gray-100 px-2 py-1 rounded"
+        className="flex justify-between items-start cursor-pointer hover:bg-gray-400 px-2 py-1 rounded"
         onClick={() => setExpandedProject(isExpanded ? null : project.id)}
         >
         <div className="flex-1">
@@ -344,7 +344,7 @@ function Experiences(props:
         return (
           <div key={idx} className="mb-4 border border-gray-200 rounded-lg p-4">
             <div
-              className="flex justify-between items-center cursor-pointer hover:bg-gray-100 px-2 py-1 rounded"
+              className="flex justify-between items-center cursor-pointer hover:bg-gray-400 px-2 py-1 rounded"
               onClick={() => setExpandedExperience(isExpanded ? null : idx)}
             >
               <div>
