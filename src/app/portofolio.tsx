@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
-import { T, groupedSkills, education, experience, contact, certifications, languageSkills, projects } from "./details";
+import { groupedSkills, education, experience, contact, certifications, languageSkills, projects } from "./details";
+import { translate, useLang, T } from "./i18n";
 
 const Portfolio: React.FC = () => {
-  const [lang, setLang] = useState<"en" | "jp">("en");
-  const toggleLang = () => setLang(lang === "en" ? "jp" : "en");
+  const { toggleLang } = useLang();
 
   return (
     <div className="max-w-5xl mx-auto p-6 font-sans">
@@ -47,7 +47,7 @@ const Portfolio: React.FC = () => {
       {/* Skills */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{T("Skills", "スキル")}</h2>
-        <Skills skills={groupedSkills} />
+        <Skills />
       </section>
 
       {/* Education */}
@@ -56,7 +56,7 @@ const Portfolio: React.FC = () => {
         {education.map((edu, i) => (
           <div key={i} className="mb-3">
             <p className="font-semibold text-gray-800">{edu.school}</p>
-            <p className="text-sm text-gray-700">{edu.degree} ({edu.year})</p>
+            <p className="text-sm text-gray-700">{translate(edu.degree)} ({edu.year})</p>
             <p className="text-sm text-gray-600">GPA: {edu.gpa}</p>
           </div>
         ))}
@@ -65,49 +65,54 @@ const Portfolio: React.FC = () => {
       {/* Certificates */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{T("Certificates", "資格")}</h2>
-        <Certificates certifications={certifications} />
+        <Certificates />
       </section>
 
       {/* Languages */}
       <section className="mb-10">
         <h2 className="text-xl font-semibold mb-4">{T("Languages", "言語スキル")}</h2>
-        <Language languageSkills={languageSkills} />
+        <Language />
       </section>
     </div>
   );
 };
 
-function Language(props: { languageSkills: string[] }) {
+function Language() {
     return  (<ul className="list-disc ml-4 text-sm text-gray-700 space-y-1">
-    {props.languageSkills.map((lang, i) => (
-      <li key={i}>{lang}</li>
+    {languageSkills.map((lang, i) => (
+      <li key={i}>{translate(lang)}</li>
     ))}
   </ul>)
 }
 
-function Certificates(props: { certifications: string[] }) {
+function Certificates() {
     return <ul className="list-disc ml-4 text-sm text-gray-700 space-y-1">
-    {props.certifications.map((cert, i) => (
-      <li key={i}>{cert}</li>
+    {certifications.map((cert, i) => (
+      <li key={i}>{translate(cert)}</li>
     ))}
   </ul>
 }
 
-function Skills({ skills }: { skills: Record<string, string[]> }) {
+function Skills() {
   return (
     <div className="space-y-4">
-      {Object.entries(skills).map(([category, items]) => (
+      {Object.entries(groupedSkills).map(([category, items]) => (
         <div key={category}>
           <h3 className="text-sm font-semibold text-gray-700 mb-2">{category}</h3>
           <div className="flex flex-wrap gap-2">
-            {items.map(skill => (
-              <span
-                key={skill}
-                className="bg-blue-100 text-xs px-3 py-1 rounded-full text-blue-800"
-              >
-                {skill}
-              </span>
-            ))}
+            {items.map((skill, index) =>{
+              const label = typeof skill === "string" ? skill : translate(skill);
+              const key = typeof skill === "string" ? skill : translate(skill);
+
+              return (
+                  <span
+                    key={key + index}
+                    className="bg-blue-100 text-xs px-3 py-1 rounded-full text-blue-800"
+                  >
+                    {label}
+                  </span>
+                )
+            } )}
           </div>
         </div>
       ))}
@@ -132,7 +137,7 @@ function Projects(props:
         >
         <div className="flex-1">
             <div className="flex items-center gap-2">
-            <h3 className="text-lg font-semibold">{project.title}</h3>
+            <h3 className="text-lg font-semibold">{translate(project.title)}</h3>
             {project.link && (
                 <a
                 href={project.link}
@@ -144,7 +149,7 @@ function Projects(props:
                 </a>
             )}
             </div>
-            <p className="text-sm text-gray-700 mt-1">{project.description}</p>
+            <p className="text-sm text-gray-700 mt-1">{translate(project.description)}</p>
         </div>
         {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </div>
@@ -158,7 +163,7 @@ function Projects(props:
             {isExpanded && (
             <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
                 {project.details.map((item, i) => (
-                <li key={i}>{item}</li>
+                <li key={i}>{translate(item)}</li>
                 ))}
             </ul>
             )}
@@ -183,15 +188,15 @@ function Experiences(props:
               onClick={() => setExpandedExperience(isExpanded ? null : idx)}
             >
               <div>
-                <h3 className="text-lg font-semibold text-gray-800">{exp.company}</h3>
-                <p className="text-sm text-gray-600">{exp.position}</p>
+                <h3 className="text-lg font-semibold text-gray-800">{translate(exp.company)}</h3>
+                <p className="text-sm text-gray-600">{translate(exp.position)}</p>
               </div>
               <div className="flex items-center gap-2 text-gray-500">
-                <span className="text-sm">{exp.period} | {exp.location}</span>
+                <span className="text-sm">{translate(exp.period)} | {translate(exp.location)}</span>
                 {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </div>
             </div>
-            <p className="text-sm text-gray-700 mt-2">{exp.description}</p>
+            <p className="text-sm text-gray-700 mt-2">{translate(exp.description)}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {exp.techStack.map((tech, i) => (
                 <span key={i} className="bg-gray-100 text-xs px-2 py-1 rounded text-gray-800 border">
@@ -204,14 +209,14 @@ function Experiences(props:
               <h3 className="text-xl font-semibold mb-4">{props.t("Details", "概要")}</h3>
               <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
                 {exp.details.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <li key={i}>{translate(item)}</li>
                 ))}
               </ul>
 
               <h3 className="text-xl font-semibold mb-4">{props.t("Achievements", "実績")}</h3>
               <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
                 {exp.achievements.map((item, i) => (
-                  <li key={i}>{item}</li>
+                  <li key={i}>{translate(item)}</li>
                 ))}
               </ul>
               </>
