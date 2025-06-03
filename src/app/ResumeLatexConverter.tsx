@@ -279,7 +279,7 @@ return latex;
     const element = document.createElement('a');
     const file = new Blob([generateLatex()], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);
-    element.download = 'resume.tex';
+    element.download = 'portofolio.tex';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
@@ -301,9 +301,9 @@ return latex;
           Download LaTeX File
         </button>
       </div>
-      {/* <pre className="p-4 bg-gray-100 rounded overflow-auto text-xs">
+      <pre className="p-4 bg-gray-100 rounded overflow-auto text-xs">
         {generateLatex()}
-      </pre> */}
+      </pre>
     </div>
   );
 };
