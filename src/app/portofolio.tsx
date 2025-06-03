@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { groupedSkills, education, experience, contact, certifications, languageSkills, projects } from "./details";
-import { translate, useLang, T } from "./i18n";
+import { Translate, useLang, useT } from "./i18n";
 
 const Portfolio: React.FC = () => {
   const { toggleLang } = useLang();
@@ -11,19 +11,19 @@ const Portfolio: React.FC = () => {
       <div className="flex justify-between items-center mb-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-800">{contact.name}</h1>
-          <p className="text-sm text-gray-500">{T("Software Engineer", "ソフトウェアエンジニア")}</p>
+          <p className="text-sm text-gray-500">{useT("Software Engineer", "ソフトウェアエンジニア")}</p>
         </div>
         <button
           onClick={toggleLang}
           className="px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
         >
-          {T("日本語", "English")}
+          {useT("日本語", "English")}
         </button>
       </div>
 
       {/* Contact Info */}
       <section className="mb-6 text-xs text-gray-600">
-        <h2 className="text-sm font-semibold mb-1 uppercase tracking-wide">{T("Contact", "連絡先")}</h2>
+        <h2 className="text-sm font-semibold mb-1 uppercase tracking-wide">{useT("Contact", "連絡先")}</h2>
         <ul className="space-y-0.5">
           <li>Email: {contact.email.replace(/@/, " [at] ")}</li>
           {/* <li>Phone: {contact.phone}</li> */}
@@ -34,29 +34,29 @@ const Portfolio: React.FC = () => {
 
       {/* Experience */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">{T("Experience", "職務経歴")}</h2>
-        <Experiences t={T} />
+        <h2 className="text-xl font-semibold mb-4">{useT("Experience", "職務経歴")}</h2>
+        <Experiences t={useT} />
       </section>
 
       {/* Projects */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">{T("Projects", "プロジェクト")}</h2>
-        <Projects t={T} />
+        <h2 className="text-xl font-semibold mb-4">{useT("Projects", "プロジェクト")}</h2>
+        <Projects />
       </section>
 
       {/* Skills */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">{T("Skills", "スキル")}</h2>
+        <h2 className="text-xl font-semibold mb-4">{useT("Skills", "スキル")}</h2>
         <Skills />
       </section>
 
       {/* Education */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">{T("Education", "学歴")}</h2>
+        <h2 className="text-xl font-semibold mb-4">{useT("Education", "学歴")}</h2>
         {education.map((edu, i) => (
           <div key={i} className="mb-3">
             <p className="font-semibold text-gray-800">{edu.school}</p>
-            <p className="text-sm text-gray-700">{translate(edu.degree)} ({edu.year})</p>
+            <p className="text-sm text-gray-700">{Translate(edu.degree)} ({edu.year})</p>
             <p className="text-sm text-gray-600">GPA: {edu.gpa}</p>
           </div>
         ))}
@@ -64,13 +64,13 @@ const Portfolio: React.FC = () => {
 
       {/* Certificates */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">{T("Certificates", "資格")}</h2>
+        <h2 className="text-xl font-semibold mb-4">{useT("Certificates", "資格")}</h2>
         <Certificates />
       </section>
 
       {/* Languages */}
       <section className="mb-10">
-        <h2 className="text-xl font-semibold mb-4">{T("Languages", "言語スキル")}</h2>
+        <h2 className="text-xl font-semibold mb-4">{useT("Languages", "言語スキル")}</h2>
         <Language />
       </section>
     </div>
@@ -80,7 +80,7 @@ const Portfolio: React.FC = () => {
 function Language() {
     return  (<ul className="list-disc ml-4 text-sm text-gray-700 space-y-1">
     {languageSkills.map((lang, i) => (
-      <li key={i}>{translate(lang)}</li>
+      <li key={i}>{Translate(lang)}</li>
     ))}
   </ul>)
 }
@@ -88,7 +88,7 @@ function Language() {
 function Certificates() {
     return <ul className="list-disc ml-4 text-sm text-gray-700 space-y-1">
     {certifications.map((cert, i) => (
-      <li key={i}>{translate(cert)}</li>
+      <li key={i}>{Translate(cert)}</li>
     ))}
   </ul>
 }
@@ -101,8 +101,8 @@ function Skills() {
           <h3 className="text-sm font-semibold text-gray-700 mb-2">{category}</h3>
           <div className="flex flex-wrap gap-2">
             {items.map((skill, index) =>{
-              const label = typeof skill === "string" ? skill : translate(skill);
-              const key = typeof skill === "string" ? skill : translate(skill);
+              const label = typeof skill === "string" ? skill : Translate(skill);
+              const key = typeof skill === "string" ? skill : Translate(skill);
 
               return (
                   <span
@@ -120,12 +120,8 @@ function Skills() {
   );
 }
 
-function Projects(props:
-   {
-    t: (en: string, jp: string) => string,
-    }) {
+function Projects() {
     const [expandedProject, setExpandedProject] = useState<string | null>(null);
-    const t = props.t
 
     return (<>{projects.map((project) => {
         const isExpanded = expandedProject === project.id;
@@ -137,7 +133,7 @@ function Projects(props:
         >
         <div className="flex-1">
             <div className="flex items-center gap-2">
-            <h3 className="text-lg font-semibold">{translate(project.title)}</h3>
+            <h3 className="text-lg font-semibold">{Translate(project.title)}</h3>
             {project.link && (
                 <a
                 href={project.link}
@@ -149,7 +145,7 @@ function Projects(props:
                 </a>
             )}
             </div>
-            <p className="text-sm text-gray-700 mt-1">{translate(project.description)}</p>
+            <p className="text-sm text-gray-700 mt-1">{Translate(project.description)}</p>
         </div>
         {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </div>
@@ -163,7 +159,7 @@ function Projects(props:
             {isExpanded && (
             <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
                 {project.details.map((item, i) => (
-                <li key={i}>{translate(item)}</li>
+                <li key={i}>{Translate(item)}</li>
                 ))}
             </ul>
             )}
@@ -187,15 +183,15 @@ function Experiences(props:
               onClick={() => setExpandedExperience(isExpanded ? null : idx)}
             >
               <div>
-                <h3 className="text-lg font-semibold text-gray-800">{translate(exp.company)}</h3>
-                <p className="text-sm text-gray-600">{translate(exp.position)}</p>
+                <h3 className="text-lg font-semibold text-gray-800">{Translate(exp.company)}</h3>
+                <p className="text-sm text-gray-600">{Translate(exp.position)}</p>
               </div>
               <div className="flex items-center gap-2 text-gray-500">
-                <span className="text-sm">{translate(exp.period)} | {translate(exp.location)}</span>
+                <span className="text-sm">{Translate(exp.period)} | {Translate(exp.location)}</span>
                 {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
               </div>
             </div>
-            <p className="text-sm text-gray-700 mt-2">{translate(exp.description)}</p>
+            <p className="text-sm text-gray-700 mt-2">{Translate(exp.description)}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {exp.techStack.map((tech, i) => (
                 <span key={i} className="bg-gray-100 text-xs px-2 py-1 rounded text-gray-800 border">
@@ -208,14 +204,14 @@ function Experiences(props:
               <h3 className="text-xl font-semibold mb-4">{props.t("Details", "概要")}</h3>
               <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
                 {exp.details.map((item, i) => (
-                  <li key={i}>{translate(item)}</li>
+                  <li key={i}>{Translate(item)}</li>
                 ))}
               </ul>
 
               <h3 className="text-xl font-semibold mb-4">{props.t("Achievements", "実績")}</h3>
               <ul className="list-disc ml-6 mt-2 text-sm text-gray-700 space-y-1">
                 {exp.achievements.map((item, i) => (
-                  <li key={i}>{translate(item)}</li>
+                  <li key={i}>{Translate(item)}</li>
                 ))}
               </ul>
               </>

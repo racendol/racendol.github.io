@@ -21,15 +21,15 @@ interface Education {
   location?: string;
 }
 
-interface Certification extends LanguagePair {}
+type Certification = LanguagePair
 
-interface LanguageSkill extends LanguagePair {}
+type LanguageSkill = LanguagePair
 
 interface GroupedSkills {
   [key: string]: (string | LanguagePair)[];
 }
 
-interface ProjectDetail extends LanguagePair {}
+type ProjectDetail = LanguagePair
 
 interface Project {
   id: string;
@@ -40,9 +40,9 @@ interface Project {
   details: ProjectDetail[];
 }
 
-interface ExperienceDetail extends LanguagePair {}
+type ExperienceDetail = LanguagePair
 
-interface Achievement extends LanguagePair {}
+type Achievement = LanguagePair
 
 interface Experience {
   company: LanguagePair;
@@ -97,7 +97,7 @@ const ResumeToLatexConverter: React.FC<ResumeToLatexConverterProps> = ({
   };
 
 const generateLatex = (): string => {
-    let latex = `%-------------------------------------------------------------------------------
+    const latex = `%-------------------------------------------------------------------------------
 % Generated Resume LaTeX - Detailed Version
 %-------------------------------------------------------------------------------
 

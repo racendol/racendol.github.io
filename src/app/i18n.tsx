@@ -24,12 +24,12 @@ export const LangProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
 export const useLang = () => useContext(LangContext);
 
-export function translate<T>(text: { en: T; ja: T }): T {
+export function Translate<T>(text: { en: T; ja: T }): T {
   const { lang } = useLang();
   return text[lang];
 };
 
-export function T(en: string, ja: string ): string {
+export function useT(en: string, ja: string ): string {
   const { lang } = useLang();
   return lang === "en" ? en : ja
 };
