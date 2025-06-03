@@ -1,4 +1,5 @@
 export const contact = {
+    name: "Rocky Arkan Adnan Ahmad",
   email: "rocky.arkan259 [at] gmail.com",
   github: "https://github.com/racendol",
   linkedin: "https://linkedin.com/in/rocky-arkan-951a45129"
@@ -239,28 +240,32 @@ export const experience = [
     location: { en: "Jakarta, Indonesia", ja: "ジャカルタ、インドネシア" },
     period: { en: "2020 September - 2020 November", ja: "2020年9月 - 2020年11月" },
     description: {
-      en: "Internship focusing on improving internal platform performance and stability.",
-      ja: "社内プラットフォームのパフォーマンスと安定性の向上に取り組むインターンシップ。"
+      en: "Developed features for the B2C application that connects farmers to customers..",
+      ja: "農家と顧客をつなぐB2Cアプリケーションの機能を開発。"
     },
     techStack: ["Golang", "Python", "Redis", "PostgreSQL", "Kafka", "GitLab CI/CD"],
     details: [
       {
-        en: "Refactored and improved performance of the internal product feed service.",
-        ja: "社内プロダクトフィードサービスのリファクタリングおよびパフォーマンス向上を担当。"
+        en: "Developed and maintained the B2C application using Spring Boot (Java).",
+        ja: "Spring Boot (Java)を用いて、B2Cアプリケーションの開発と保守を担当。"
       },
       {
-        en: "Improved error handling and fixed Redis cache bugs.",
-        ja: "Redisキャッシュのバグ修正やエラーハンドリングの改善を実施。"
+        en: "Worked in a startup agile environment using Scrum methodology.",
+        ja: "スタートアップ環境において、Scrum手法を用いたアジャイル開発に従事。"
       },
       {
-        en: "Collaborated with senior engineers in debugging and feature enhancement.",
-        ja: "シニアエンジニアと協力してバグの修正や機能改善に取り組む。"
+        en: "Communicated in Bahasa Indonesia and English with team members, including those based in India.",
+        ja: "インドネシア語と英語で、インド拠点を含むチームメンバーと連携。"
       }
     ],
     achievements: [
       {
-        en: "Improved service stability and performance through targeted refactoring.",
-        ja: "リファクタリングによってサービスの安定性とパフォーマンスを向上。"
+        en: "Developed a critical voucher feature using the Command Design Pattern, potentially increasing sales by up to 20%",
+        ja: "コマンドデザインパターンを使用して重要なバウチャー機能を開発し、売上を最大20%向上させる可能性を実現。"
+      },
+      {
+        en: "Refactored the voucher system to use RabbitMQ messaging queues for inter-service communication, enhancing scalability.",
+        ja: "バウチャーシステムをRabbitMQを使ったメッセージキューにリファクタリングし、サービス間通信のスケーラビリティを向上。"
       }
     ]
   }
