@@ -34,7 +34,7 @@ export const groupedSkills = {
     "AWS", "Jenkins", "GitLab CI/CD", "Heroku"
   ],
   "Messaging & Communication": ["RabbitMQ", "Kafka"],
-  "Databases": ["PostgreSQL", "MariaDB", "MySQL", "MongoDB", "Redis"],
+  "Databases": ["PostgreSQL", "MariaDB", "MySQL", "MongoDB", "Redis", "TiDB"],
   "Monitoring & Logging": ["Grafana", "Telegraf", "Loki", "Promtail"],
   "Other": [
     { en: "Data Structures", ja: "データ構造" },
@@ -190,7 +190,7 @@ export const experience = [
     },
     techStack: [
       "Golang", "Python", "Docker", "Docker Swarm", "Ansible", "AWS", "Jenkins",
-      "Github Action", "Terraform", "MariaDB", "Telegraf", "Grafana",
+      "Github Action", "Terraform", "MariaDB", "MongoDB", "TiDB", "Telegraf", "Grafana",
       "Kafka", "RabbitMQ", "Redis"
     ],
     details: [
