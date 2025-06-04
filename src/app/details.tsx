@@ -195,8 +195,8 @@ export const experience = [
     ],
     details: [
       {
-        en: "Developed and maintained a DNS platform used by internal Samsung projects.",
-        ja: "Samsung社内プロジェクトで使用されるDNSプラットフォームの開発と保守を担当。"
+        en: "Developed and maintained a DNS platform used by internal Samsung projects with millions of queries per second.",
+        ja: "100万リクエスト毎秒のSamsung社内プロジェクトで使用されるDNSプラットフォームの開発と保守を担当。"
       },
       {
         en: "Supported multi-region deployments with asynchronous replication and routing (health checks, region-based, latency-based).",
@@ -243,7 +243,7 @@ export const experience = [
       en: "Developed features for the B2C application that connects farmers to customers..",
       ja: "農家と顧客をつなぐB2Cアプリケーションの機能を開発。"
     },
-    techStack: ["Golang", "Python", "Redis", "PostgreSQL", "Kafka", "GitLab CI/CD"],
+    techStack: ["Java", "Spring", "Jenkins", "RabbitMQ", "MySQL", "Redis", "GraphQL", "Grafana", "Telegraf"],
     details: [
       {
         en: "Developed and maintained the B2C application using Spring Boot (Java).",
