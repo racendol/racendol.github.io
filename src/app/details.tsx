@@ -5,8 +5,6 @@ export interface LanguagePair {
 
 export type Summary = LanguagePair
 
-export interface Organization{}
-
 export interface Contact {
     name: string;
   email: string;
