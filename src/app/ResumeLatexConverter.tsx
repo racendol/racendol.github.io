@@ -1,72 +1,10 @@
 // components/ResumeToLatexConverter.tsx
 import React from 'react';
 
-interface LanguagePair {
-  en: string;
-  ja: string;
-}
-
-interface Contact {
-    name: string;
-  email: string;
-  github: string;
-  linkedin: string;
-}
-
-interface Education {
-  school: string;
-  degree: LanguagePair;
-  gpa: string;
-  year: string;
-  location?: string;
-}
-
-type Certification = LanguagePair
-
-type LanguageSkill = LanguagePair
-
-interface GroupedSkills {
-  [key: string]: (string | LanguagePair)[];
-}
-
-type ProjectDetail = LanguagePair
-
-interface Project {
-  id: string;
-  title: LanguagePair;
-  description: LanguagePair;
-  techStack: string[];
-  link?: string;
-  details: ProjectDetail[];
-}
-
-type ExperienceDetail = LanguagePair
-
-type Achievement = LanguagePair
-
-interface Experience {
-  company: LanguagePair;
-  position: LanguagePair;
-  location: LanguagePair;
-  period: LanguagePair;
-  description: LanguagePair;
-  techStack: string[];
-  details: ExperienceDetail[];
-  achievements?: Achievement[];
-}
-
-interface ResumeData {
-  contact: Contact;
-  education: Education[];
-  certifications: Certification[];
-  languageSkills: LanguageSkill[];
-  groupedSkills: GroupedSkills;
-  projects: Project[];
-  experience: Experience[];
-}
+import * as Details from './details';
 
 interface ResumeToLatexConverterProps {
-  resumeData: ResumeData;
+  resumeData: Details.PortofolioData;
   language?: 'en' | 'ja';
 }
 
@@ -91,7 +29,7 @@ const ResumeToLatexConverter: React.FC<ResumeToLatexConverterProps> = ({
     return text.replace(/[&%$#_{}~^\\]/g, (char) => specialChars[char] || char);
   };
 
-  const getLocalizedText = (text: LanguagePair | string): string => {
+  const getLocalizedText = (text: Details.LanguagePair | string): string => {
     if (typeof text === 'string') return text;
     return text[language];
   };
@@ -252,7 +190,7 @@ const generateLatex = (): string => {
 \\resumeSubHeadingListStart
     ${Object.entries(resumeData.groupedSkills).map(([category, skills]) => `
     \\resumeSubItem{\\textbf{${escapeLatexSpecialChars(category)}}}
-    {${(skills as (string | LanguagePair)[]).map(skill => 
+    {${(skills as (string | Details.LanguagePair)[]).map(skill => 
         typeof skill === 'string' ? 
         escapeLatexSpecialChars(skill) : 
         escapeLatexSpecialChars(getLocalizedText(skill))
