@@ -13,7 +13,7 @@ import {
   experience 
 } from './details';
 import ResumeToLatexConverter from './ResumeLatexConverter';
-
+import HeroSection from './hero';
 
 const Home: React.FC = () => {
   const resumeData = {
@@ -26,10 +26,11 @@ const Home: React.FC = () => {
     experience
   };
 
-  return (
+  return (  
     <div className='App'>
       <LangProvider>
-      <Portfolio />
+      <HeroSection />
+      {/* <Portfolio /> */}
       </LangProvider>
       
       {/* show only on dev */}
