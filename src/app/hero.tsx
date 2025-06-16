@@ -1,5 +1,4 @@
 import React from "react";
-import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { Translate } from "./i18n";
 import Link from "next/link";
@@ -20,7 +19,6 @@ const HeroSection = () => {
             <span className="text-2xl">👨‍💻</span>
           </div>
         </motion.div>
-
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -28,11 +26,11 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-4xl md:text-6xl font-bold mb-4"
         >
-          Hi, I'm <span className="text-indigo-400">Racendol</span>
+          Hi, I am <span className="text-indigo-400">Rocky Arkan Adnan Ahmad</span>
         </motion.h1>
 
         {/* Typing Animation */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -54,7 +52,7 @@ const HeroSection = () => {
             repeat={Infinity}
             className="text-indigo-300"
           />
-        </motion.div>
+        </motion.div> */}
 
         {/* Short Bio */}
         <motion.p
@@ -63,8 +61,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-gray-300 max-w-2xl mx-auto mb-8 text-lg"
         >
-          I build exceptional digital experiences with modern technologies.
-          Currently focused on Next.js, React, and scalable backend solutions.
+            
         </motion.p>
 
         {/* CTA Buttons */}
@@ -74,16 +71,14 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex gap-4 justify-center"
         >
-          {/* Smooth scroll to work section on same page */}
           <Link 
-            href="#work" 
+            href="/work" 
             className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
             scroll={false} // Disables default instant scroll
           >
             <Translate en="View My Work" ja="プロジェクトを見る" />
           </Link>
 
-          {/* OR if you have a separate work page: */}
           {/* <Link
             href="/work" 
             className="px-6 py-3 border border-indigo-400 text-indigo-400 hover:bg-indigo-900/30 rounded-lg font-medium transition-all duration-300"

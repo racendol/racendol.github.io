@@ -7,8 +7,8 @@ import { projects, experience } from "../details";
 export default function WorkPage() {
   return (
     <>
+    <ExperiencesSection experiences={experience} />
       <ProjectsSection projects={projects} />
-      <ExperiencesSection experiences={experience} />
     </>
   );
 }

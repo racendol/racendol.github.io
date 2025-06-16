@@ -1,8 +1,6 @@
 'use client'
 
 import React from 'react';
-import Portfolio from './portofolio';
-import { LangProvider } from "./i18n";
 import { 
   contact, 
   education, 
@@ -28,11 +26,8 @@ const Home: React.FC = () => {
 
   return (  
     <div className='App'>
-      <LangProvider>
       <HeroSection />
       {/* <Portfolio /> */}
-      </LangProvider>
-      
       {/* show only on dev */}
       {process.env.NODE_ENV === 'development' &&
       <div className="container mx-auto p-4">

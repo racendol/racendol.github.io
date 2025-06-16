@@ -1,4 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+// lib/localization.ts
+"use client";
+
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 type Lang = "en" | "ja";
 
@@ -13,7 +16,16 @@ const LangContext = createContext<{
 export const LangProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lang, setLang] = useState<Lang>("en");
 
-  const toggleLang = () => setLang((prev) => (prev === "en" ? "ja" : "en"));
+  useEffect(() => {
+    const savedLang = localStorage.getItem("lang") as Lang | null;
+    if (savedLang) setLang(savedLang);
+  }, []);
+
+  const toggleLang = () => {
+    const newLang = lang === "en" ? "ja" : "en";
+    setLang(newLang);
+    localStorage.setItem("lang", newLang);
+  };
 
   return (
     <LangContext.Provider value={{ lang, toggleLang }}>

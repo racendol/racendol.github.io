@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Project, PortofolioData } from "../details"; 
+import { Project } from "../details"; 
 import { Translate, useLang } from "../i18n";
 import { FiExternalLink, FiGithub, FiX, FiChevronDown, FiChevronUp } from "react-icons/fi";
 
@@ -8,19 +8,26 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
   const { lang } = useLang();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [expandedDetails, setExpandedDetails] = useState<boolean>(false);
-  const [filter, setFilter] = useState<string>("All");
+
+  // Dark theme colors
+  const cardStyle = "bg-gray-800 border border-gray-700 hover:border-indigo-500";
+  const textStyle = "text-gray-200";
+  const secondaryTextStyle = "text-gray-400";
+  const accentColor = "text-indigo-400";
+  const accentBorder = "border-indigo-500";
+
 
   // Get all unique tech stacks for filtering
-  const allTechStacks = Array.from(
-    new Set(projects.flatMap(project => project.techStack))
-  );
+  // const allTechStacks = Array.from(
+  //   new Set(projects.flatMap(project => project.techStack))
+  // );
 
-  const filteredProjects = filter === "All" 
-    ? projects 
-    : projects.filter(project => project.techStack.includes(filter));
+  // const filteredProjects = filter === "All" 
+  //   ? projects 
+  //   : projects.filter(project => project.techStack.includes(filter));
 
   return (
-    <section id="work" className="py-20 px-4 bg-gray-50 dark:bg-gray-900">
+    <section id="work" className="py-20 px-4 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -30,19 +37,19 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <Translate en="My Work" ja="プロジェクト" />
+          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${textStyle}`}>
+            <Translate en="Projects" ja="プロジェクト" />
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className={`${secondaryTextStyle} max-w-2xl mx-auto`}>
             <Translate 
-              en="Selected projects I've built with various technologies" 
+              en="Projects I've built" 
               ja="様々な技術で構築したプロジェクト一覧" 
             />
           </p>
         </motion.div>
 
         {/* Filter Controls */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -72,11 +79,11 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
               {tech}
             </button>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+          {projects.map((project) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -84,27 +91,32 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className={`${cardStyle} rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300`}
             >
               <div 
                 className="h-48 bg-gray-200 dark:bg-gray-700 flex items-center justify-center cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 {/* Placeholder for project image - replace with actual image */}
-                <span className="text-gray-500 dark:text-gray-400 text-lg">
+                <span className={`${secondaryTextStyle} text-lg`}>
                   {project.title[lang]}
                 </span>
               </div>
+
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{project.title[lang]}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <h3 className={`text-xl font-bold mb-2 ${textStyle}`}>
+                  {project.title[lang]}
+                </h3>
+                <p className={`${secondaryTextStyle} mb-4`}>
                   {project.description[lang]}
                 </p>
+
+                {/* Tech stack */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.techStack.map((tech) => (
                     <span 
                       key={tech} 
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs"
+                      className="px-3 py-1 bg-gray-700 rounded-full text-xs text-gray-300"
                     >
                       {tech}
                     </span>
@@ -112,7 +124,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                 </div>
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="text-indigo-600 dark:text-indigo-400 font-medium flex items-center"
+                  className={`${accentColor} font-medium flex items-center`}
                 >
                   <Translate en="View Details" ja="詳細を見る" />
                   <FiChevronDown className="ml-1" />
@@ -128,12 +140,12 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white dark:bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              className={`${cardStyle} rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto`}
             >
               <div className="relative">
                 {/* Modal Header */}
-                <div className="sticky top-0 bg-white dark:bg-gray-800 p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                  <h3 className="text-2xl font-bold">
+                  <div className={`sticky top-0 ${cardStyle} p-6 border-b ${accentBorder} flex justify-between items-center`}>
+                  <h3 className={`text-2xl font-bold ${textStyle}`}>
                     {selectedProject.title[lang]}
                   </h3>
                   <button
@@ -141,25 +153,25 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                       setSelectedProject(null);
                       setExpandedDetails(false);
                     }}
-                    className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="p-2 rounded-full hover:bg-gray-700"
                   >
-                    <FiX size={24} />
+                  <FiX size={24} className={textStyle} />
                   </button>
                 </div>
 
                 {/* Modal Content */}
                 <div className="p-6">
                   <div className="mb-6">
-                    <h4 className="font-semibold mb-2">
+                    <h4 className={`font-semibold mb-2 ${textStyle}`}>
                       <Translate en="Description" ja="説明" />
                     </h4>
-                    <p className="text-gray-700 dark:text-gray-300">
+                    <p className={`${secondaryTextStyle}`}>
                       {selectedProject.description[lang]}
                     </p>
                   </div>
 
                   <div className="mb-6">
-                    <h4 className="font-semibold mb-2">
+                    <h4 className={`font-semibold mb-2 ${textStyle}`}>
                       <Translate en="Tech Stack" ja="使用技術" />
                     </h4>
                     <div className="flex flex-wrap gap-2">
@@ -176,12 +188,12 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
 
                   <div className="mb-6">
                     <div className="flex justify-between items-center mb-2">
-                      <h4 className="font-semibold">
+                    <h4 className={`font-semibold ${textStyle}`}>
                         <Translate en="Details" ja="詳細" />
                       </h4>
                       <button
                         onClick={() => setExpandedDetails(!expandedDetails)}
-                        className="flex items-center text-indigo-600 dark:text-indigo-400"
+                        className={`flex items-center ${accentColor}`}
                       >
                         {expandedDetails ? (
                           <>
@@ -197,7 +209,7 @@ const ProjectsSection = ({ projects }: { projects: Project[] }) => {
                       </button>
                     </div>
                     <div className={`${expandedDetails ? "block" : "line-clamp-3"}`}>
-                      <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                      <ul className={`list-disc pl-5 space-y-2 ${textStyle}`}>
                         {selectedProject.details.map((detail, index) => (
                           <li key={index}>{detail[lang]}</li>
                         ))}
