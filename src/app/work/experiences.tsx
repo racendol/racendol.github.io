@@ -1,4 +1,3 @@
-// components/ExperiencesSection.tsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Experience } from "../details";

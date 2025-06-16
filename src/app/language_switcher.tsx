@@ -9,11 +9,7 @@ export const FloatingLanguageSwitcher = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleToggle = () => {
-    const savedLang = localStorage.getItem("lang");
-    if (savedLang && savedLang !== lang) {
-      toggleLang(); // Only toggle if different
-    }
-    localStorage.setItem("lang", lang === "en" ? "ja" : "en");
+    toggleLang();
   };
 
   return (

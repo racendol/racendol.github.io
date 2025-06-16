@@ -26,7 +26,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-4xl md:text-6xl font-bold mb-4"
         >
-          Hi, I am <span className="text-indigo-400">Rocky Arkan Adnan Ahmad</span>
+          <span className="text-indigo-400">Rocky Arkan Adnan Ahmad</span>
         </motion.h1>
 
         {/* Typing Animation */}
@@ -61,7 +61,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-gray-300 max-w-2xl mx-auto mb-8 text-lg"
         >
-            
+            <Translate en="Software Engineer currently in Japan" ja="現在日本に住んでいるソフトウェアエンジニア。" />
         </motion.p>
 
         {/* CTA Buttons */}
@@ -76,15 +76,15 @@ const HeroSection = () => {
             className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-medium transition-all duration-300 transform hover:scale-105"
             scroll={false} // Disables default instant scroll
           >
-            <Translate en="View My Work" ja="プロジェクトを見る" />
+            <Translate en="Work and Projects" ja="経歴とプロジェクト" />
           </Link>
 
-          {/* <Link
-            href="/work" 
+          <Link
+            href="/about" 
             className="px-6 py-3 border border-indigo-400 text-indigo-400 hover:bg-indigo-900/30 rounded-lg font-medium transition-all duration-300"
           >
-            <Translate en="Full Portfolio" ja="作品一覧" />
-          </Link> */}
+            <Translate en="About Me" ja="自己紹介" />
+          </Link>
         </motion.div>
       </div>
     </section>
