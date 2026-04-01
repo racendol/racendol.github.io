@@ -329,6 +329,11 @@ const tomatoExperience: Experience = {
   techStack: ["Java", "Spring", "Angular", "React", "Typescript", "PostgreSQL"],
   details: [
     {
+      en: "Developed and maintained a full-stack internal inventory system (Angular, Spring Boot) for managing embedded controllers and security devices, including sensors and control units.",
+      ja: "AngularおよびSpring Bootを用いて、組込みコントローラやセキュリティ機器（センサー、制御装置など）を管理する社内向け在庫管理システムのフロントエンドおよびバックエンドの開発・保守を担当しました。"
+,
+    },
+    {
       en: "Developed a full-stack internal visitor management system (Spring Boot/Angular/React), digitizing operations previously done on paper through QR code integration and automated email notifications, streamlined operations and save hours of manual processing time.",
       ja: "紙ベースで行われていた業務をQRコードの統合と自動メール通知を使用してデジタル化することで、社内の訪問者管理システム（Spring Boot/Angular/React）をフルスタックで開発し、業務を効率化して数時間の手作業を削減しました。",
     },
@@ -337,7 +342,15 @@ const tomatoExperience: Experience = {
     {
       en: "Led a team composed of junior developers as team leader, teaching and mentoring on Spring Boot, MVC architecture, REST API, Database, and SOLID principles.",
       ja: "チームリーダーとして若手開発者で構成されたチームを指導し、Spring Boot、MVCアーキテクチャ、REST API、データベース、およびSOLID原則について教育とメンタリングを行いました。",
-    }
+    },
+    {
+      en: "Designed and implemented a data-linking feature enabling configurable mappings between input and output controllers, including class design and end-to-end CRUD interfaces. ",
+      ja: "入力コントローラーと出力コントローラー間の関係を柔軟に設定できるデータ連携機能を設計・実装し、クラス設計およびCRUD画面を含むエンドツーエンドの開発を行いました。",
+    },
+    {
+      en: "Resolved a critical high-frequency data duplication issue causing severe performance degradation by introducing concurrency control (semaphore) and batching/grouping logic, reducing redundant writes and improving system performance by 10x.",
+      ja: "また、高頻度で発生するデータ重複登録による性能劣化の問題を解決するため、Semaphoreによる同時実行制御およびバッチ／グルーピング処理を導入し、冗長な書き込みを削減することでシステム性能を約10倍に向上させました。",
+    },
   ]
 };
 
